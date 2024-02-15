@@ -1,0 +1,20 @@
+.videoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.videoDetails {
+  /* width: calc(100% - 150px); */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dragIcon {
+  cursor: grab;
+}

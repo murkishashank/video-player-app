@@ -18,7 +18,7 @@ export const Playlist = memo((props: Props) => {
       </div>
       <div className="playlistContainer">
         {mediaJSON.categories[0].videos.map((videoDetails) => (
-          <PlaylistVideoCard videoDetails={videoDetails} />
+          <PlaylistVideoCard videoDetails={videoDetails} key={videoDetails.title} />
         ))}
       </div>
     </div>
