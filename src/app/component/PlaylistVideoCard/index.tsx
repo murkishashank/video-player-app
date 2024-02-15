@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { MdOutlineDragHandle } from "react-icons/md";
+import "./playlistVideoCard.css"
 
 interface Props {
   videoDetails: any;

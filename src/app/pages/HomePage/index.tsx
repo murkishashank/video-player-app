@@ -7,9 +7,12 @@ interface Props {}
 
 export const HomePage = memo((props: Props) => {
   return (
+    <>
+    <p>Video Player</p>
     <div className={"container"}>
         <VideoPlayer />
         <Playlist />
     </div>
+    </>
   );
 });
