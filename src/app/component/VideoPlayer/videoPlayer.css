@@ -1,11 +1,34 @@
-.videoPlayer {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
 .videoPlayerVideo {
   width: 100%;
-  height: auto;
-  border-radius: 5px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.videoMetaData {
+  padding: 10px;
+}
+
+.videoTitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.videoDescription {
+  font-family: "Lato", sans-serif;
+  font-size: 1rem;
+  color: var(--dark-blue);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.videoSubTitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+  color: var(--secondary-color);
 }

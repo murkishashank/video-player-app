@@ -16,12 +16,13 @@ export const VideoPlayer = memo((props: Props) => {
         autoPlay
       ></video>
       <div className={"videoMetaData"}>
-        <h2>{"Title"}</h2>
-        <p>
+        <h2 className={"videoTitle"}>{"Title"}</h2>
+        <p className={"videoDescription"}>
           {
             "Big Buck Bunny tells the story of a giant rabbit with a heart bigger than himself. When one sunny day three rodents rudely harass him, something snaps... and the rabbit ain't no bunny anymore! In the typical cartoon tradition he prepares the nasty rodents a comical revenge.\n\nLicensed under the Creative Commons Attribution license\nhttp://www.bigbuckbunny.org"
           }
         </p>
+        <p className={"videoSubTitle"}>By Big Buck Bunny</p>
       </div>
     </div>
   );
