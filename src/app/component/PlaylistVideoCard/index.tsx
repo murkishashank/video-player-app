@@ -9,18 +9,18 @@ interface Props {
 export const PlaylistVideoCard = memo(({ videoDetails }: Props) => {
   const { sources, subtitle, thumb, title } = videoDetails ?? {};
   return (
-    <div className="videoContainer">
+    <div className="playlistVideoContainer">
       <div>
         <MdOutlineDragHandle className={"icon dragIcon"} />
       </div>
       <video
         src={sources[0]}
         poster={thumb}
-        style={{ maxWidth: "150px" }}
+        className="playlistDetailsVideo"
       ></video>
-      <div className={"videoDetails"}>
-        <h3>{title}</h3>
-        <p>{subtitle}</p>
+      <div className={"playlistVideoDetails"}>
+        <h3 className="playlistVideoDetailsTitle">{title}</h3>
+        <p className="playlistVideoDetailsSubTitle">{subtitle}</p>
       </div>
     </div>
   );
