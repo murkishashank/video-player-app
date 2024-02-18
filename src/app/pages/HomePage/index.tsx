@@ -45,8 +45,6 @@ export const HomePage = memo((props: Props) => {
   const handleVideoEnded = () => {
     const { selectedVideoIndex } = selectedVideo;
     const nextVideoIndex = selectedVideoIndex + 1;
-    console.log("nextVideoIndex", nextVideoIndex);
-    console.log(" playlistOrdered.length", playlistOrdered.length);
     if (nextVideoIndex < playlistOrdered.length)
       setSelectedVideo({
         videoDetails: getVideoDetailsByIndex(nextVideoIndex, playlistOrdered),
@@ -55,7 +53,6 @@ export const HomePage = memo((props: Props) => {
   };
 
   const updatePlaylistOrder = (orderedPlaylist: VideoDetails[]) => {
-    console.log("orderedPlaylist", orderedPlaylist);
     setOrderedPlaylist(orderedPlaylist);
     const videoIndex = getSelectedVideoIndex(
       selectedVideo.videoDetails.id,

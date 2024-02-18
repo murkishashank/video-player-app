@@ -37,9 +37,6 @@ export const Playlist = memo(
       (index: number, atIndex: number) => {
         const { card, index: foundIndex } = findCard(index);
 
-        console.log("foundIndex", foundIndex);
-        console.log("atIndex", atIndex);
-
         const updatedPlaylist = update(playlistVideos, {
           $splice: [
             [foundIndex, 1],
