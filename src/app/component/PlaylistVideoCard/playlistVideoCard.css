@@ -1,0 +1,64 @@
+.playlistVideoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.playlistVideoRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.playlistVideoDetails {
+  width: calc(100% - 150px);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.playlistDetailsVideo {
+  max-width: 150px;
+}
+
+.playlistVideoDetailsTitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.playlistVideoDetailsSubTitle {
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  color: var(--dark-blue);
+  margin-bottom: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.playlistVideoContainer:hover {
+  background-color: var(--secondary-color) !important;
+}
+
+.dragIcon {
+  cursor: grab;
+}
+
+@media screen and (max-width: 550px) {
+  .playlistVideoDetails {
+    /* max-width: 100px; */
+    white-space: wrap;
+  }
+}
