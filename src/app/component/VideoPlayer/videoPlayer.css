@@ -1,5 +1,7 @@
 .videoPlayerVideo {
   width: 100%;
+  max-width: 60vw;
+  min-width: 60vw;
   border-radius: 10px;
   overflow: hidden;
 }
