@@ -24,7 +24,9 @@ export const Playlist = memo(
   }: Props) => {
     const findCard = useCallback(
       (id: number) => {
-        const card = playlistVideos.filter(({id: playlistId}) => playlistId === id)[0];
+        const card = playlistVideos.filter(
+          ({ id: playlistId }) => playlistId === id
+        )[0];
         return {
           card,
           index: playlistVideos.indexOf(card),
@@ -53,9 +55,9 @@ export const Playlist = memo(
       <div className="card">
         <div className="playListCardHeader">
           <h3 className="playListHeading">Playlist</h3>
-          <ToolTip toolTipText={"Shuffle"}>
+          {/* <ToolTip toolTipText={"Shuffle"}>
             <BiShuffle className="shuffle-icon icon" />
-          </ToolTip>
+          </ToolTip> */}
         </div>
         <div className="playlistContainer">
           <DndProvider backend={HTML5Backend}>
