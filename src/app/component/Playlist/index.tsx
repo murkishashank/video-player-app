@@ -3,27 +3,36 @@ import "./playlist.css";
 import { BiShuffle } from "react-icons/bi";
 import { ToolTip } from "../ToolTip";
 import { PlaylistVideoCard } from "../PlaylistVideoCard";
-import { mediaJSON } from "../../constants/data";
+import { VideoDetails } from "../../constants/types";
 
-interface Props {}
+interface Props {
+  playlistVideos: VideoDetails[];
+  onSelectedVideoChange: (videoDetails: VideoDetails, index: number) => void;
+  selectedVideoIndex: number;
+}
 
-export const Playlist = memo((props: Props) => {
-  return (
-    <div className="card">
-      <div className="playListCardHeader">
-        <h3 className="playListHeading">Playlist</h3>
-        <ToolTip toolTipText={"Shuffle"}>
-          <BiShuffle className="shuffle-icon icon" />
-        </ToolTip>
+export const Playlist = memo(
+  ({ onSelectedVideoChange, selectedVideoIndex, playlistVideos }: Props) => {
+    return (
+      <div className="card">
+        <div className="playListCardHeader">
+          <h3 className="playListHeading">Playlist</h3>
+          <ToolTip toolTipText={"Shuffle"}>
+            <BiShuffle className="shuffle-icon icon" />
+          </ToolTip>
+        </div>
+        <div className="playlistContainer">
+          {playlistVideos.map((videoDetails, index) => (
+            <PlaylistVideoCard
+              videoDetails={videoDetails}
+              key={videoDetails.title}
+              index={index}
+              onSelectedVideoChange={onSelectedVideoChange}
+              selectedVideoIndex={selectedVideoIndex}
+            />
+          ))}
+        </div>
       </div>
-      <div className="playlistContainer">
-        {mediaJSON.categories[0].videos.map((videoDetails) => (
-          <PlaylistVideoCard
-            videoDetails={videoDetails}
-            key={videoDetails.title}
-          />
-        ))}
-      </div>
-    </div>
-  );
-});
+    );
+  }
+);
