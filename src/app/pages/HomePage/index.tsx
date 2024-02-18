@@ -4,7 +4,10 @@ import { Playlist } from "../../component/Playlist";
 import "./homePage.css";
 import { VideoDetails } from "../../constants/types";
 import { mediaJSON } from "../../constants/data";
-import { getVideoDetailsByIndex } from "../../utils/common";
+import {
+  getSelectedVideoIndex,
+  getVideoDetailsByIndex,
+} from "../../utils/common";
 
 interface Props {}
 
@@ -14,6 +17,7 @@ export const HomePage = memo((props: Props) => {
     selectedVideoIndex: number;
   }>({
     videoDetails: {
+      id: 0,
       title: "",
       description: "",
       subtitle: "",
@@ -22,12 +26,14 @@ export const HomePage = memo((props: Props) => {
     },
     selectedVideoIndex: 0,
   });
+  const playlistVideos = mediaJSON.categories[0].videos;
 
-  const playlistVideos = mediaJSON.categories[0].videos
+  const [playlistOrdered, setOrderedPlaylist] =
+    useState<VideoDetails[]>(playlistVideos);
 
   useEffect(() => {
     setSelectedVideo({
-      videoDetails: mediaJSON.categories[0].videos[0],
+      videoDetails: playlistOrdered[0],
       selectedVideoIndex: 0,
     });
   }, []);
@@ -39,27 +45,48 @@ export const HomePage = memo((props: Props) => {
   const handleVideoEnded = () => {
     const { selectedVideoIndex } = selectedVideo;
     const nextVideoIndex = selectedVideoIndex + 1;
-    setSelectedVideo({
-      videoDetails: getVideoDetailsByIndex(
-        nextVideoIndex,
-        playlistVideos
-      ),
-      selectedVideoIndex: nextVideoIndex,
+    console.log("nextVideoIndex", nextVideoIndex);
+    console.log(" playlistOrdered.length", playlistOrdered.length);
+    if (nextVideoIndex < playlistOrdered.length)
+      setSelectedVideo({
+        videoDetails: getVideoDetailsByIndex(nextVideoIndex, playlistOrdered),
+        selectedVideoIndex: nextVideoIndex,
+      });
+  };
+
+  const updatePlaylistOrder = (orderedPlaylist: VideoDetails[]) => {
+    console.log("orderedPlaylist", orderedPlaylist);
+    setOrderedPlaylist(orderedPlaylist);
+    const videoIndex = getSelectedVideoIndex(
+      selectedVideo.videoDetails.id,
+      orderedPlaylist
+    );
+    setSelectedVideo((prev) => {
+      return { ...prev, selectedVideoIndex: videoIndex };
     });
   };
 
   return (
     <>
-      <p>Video Player</p>
+      <h3
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        Video Player
+      </h3>
       <div className={"container"}>
         <VideoPlayer
           selectedVideo={selectedVideo.videoDetails}
           handleVideoEnded={handleVideoEnded}
         />
         <Playlist
-        playlistVideos={playlistVideos}
+          playlistVideos={playlistOrdered}
           onSelectedVideoChange={onSelectedVideoChange}
           selectedVideoIndex={selectedVideo.selectedVideoIndex}
+          updatePlaylistOrder={updatePlaylistOrder}
         />
       </div>
     </>

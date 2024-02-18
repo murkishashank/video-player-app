@@ -24,7 +24,6 @@ export const VideoPlayer = memo(
           src={sources[0] ?? ""}
           poster={thumb}
           controls
-          muted
           autoPlay
           preload="auto"
           controlsList="nodownload"
